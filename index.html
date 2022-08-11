@@ -1,0 +1,110 @@
+
+
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head
+        content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>
+            ClipCC Mirror
+        </title>
+        <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+        crossorigin="anonymous">
+        <style>
+            .foot {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                color: #bfc9d3;
+                margin-top: 100px;
+                padding-top: 60px;
+                padding-bottom: 60px;
+                background: #384452;
+            }
+        </style>
+    </head>
+    <body onload="get()">
+        <div class="container">
+            <!-- Main component for a primary marketing message or call to action
+            -->
+            <div class="jumbotron">
+                <h1>
+                    ClipCC Mirror
+                </h1>
+                <p>
+                    The official mirror site for ClipCC Desktop releases
+                </p>
+                <p>
+                    Provide by Clipteam
+                </p>
+            </div>
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                镜像名称
+                            </th>
+                            <th>
+                                上次同步时间
+                            </th>
+                            <th>
+                                镜像大小
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="name">
+                                Clipteam/clipcc-desktop
+                            </td>
+                            <td id="last">
+                                1926-8-17 11:45
+                            </td>
+                            <td id="size">
+                                114514 G
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="foot">
+            <div class="container">
+                <p>本镜像站由 Clipteam 相关成员搭建。</p>
+                <p>感谢团队成员 Zerlight 贡献的镜像服务器。</p>
+                <p>在搭建过程中，参考了 TUNA 协会的同步脚本等开源项目，在此 一并表示感谢。</p>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous">
+        </script>
+    </body>
+    <script>
+        function get() {
+            $.ajax({
+                url: "info.json",
+                success: function(res) {
+                    $("#name").html(`<a href=${res.name}>${res.name}</a>`);
+                    $("#last").html(res.last);
+                    $("#size").html(res.size);
+                }
+            });
+        }
+    </script>
+
+</html>
